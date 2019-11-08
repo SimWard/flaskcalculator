@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action = "">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Calculate</legend>
+            <div class="form-group">
+                {{ form.myFunction.label(class="form-control-label") }}
+                {% if form.myFunction.errors %}
+                    {{ form.myFunction(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.myFunction.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.myFunction(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+        <div>
+        <p>You will see best results from using the following arithmetic symbols.</p>
+            <ul>
+                <li>Add:        +</li>
+                <li>Minus:      -</li>
+                <li>Multiply:   *</li>
+                <li>Divide:     /</li>
+                <li>Power:      **</li>
+                <li>Modulus:    %</li>
+            </ul>
+            <p>Also feel free to use parentheses "()" for more specificity in your calculations!</p>
+        </div>
+    </form>
+</div>
+{% endblock content %}
